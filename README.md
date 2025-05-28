@@ -1,62 +1,37 @@
-# 🚀 Getting started with Strapi
+# How To Build A Widget Plugin For Strapi
 
-Strapi comes with a full featured [Command Line Interface](https://docs.strapi.io/dev-docs/cli) (CLI) which lets you scaffold and manage your project in seconds.
+In this post, we will take a look at how to build a widget plugin for Strapi. 
 
-### `develop`
+Strapi Widgets are a way to add custom widgets to the Strapi admin panel. They are a great way to add custom functionality to the admin panel.
 
-Start your Strapi application with autoReload enabled. [Learn more](https://docs.strapi.io/dev-docs/cli#strapi-develop)
+Let's first take a look at what we will be building, then I will walk you through the steps on how to build it.
 
-```
-npm run develop
-# or
-yarn develop
-```
+## What We Will Be Building
 
-### `start`
+We will be building a widget that displays the number of content types in the Strapi application.
 
-Start your Strapi application with autoReload disabled. [Learn more](https://docs.strapi.io/dev-docs/cli#strapi-start)
+Here is what the widget will look like in the admin panel:
 
-```
-npm run start
-# or
-yarn start
-```
+![Widget Preview](./public/widget-preview.png)
 
-### `build`
+## Action Plan
 
-Build your admin panel. [Learn more](https://docs.strapi.io/dev-docs/cli#strapi-build)
+1. Create a new Strapi application with sample data
+2. Create a new Strapi plugin
+3. Create and register a new widget
+4. Create Frontend Component
+5. Create Backend Controller
+6. Create Backend Routes ( Admin and Content API )
+7. Put everything together.
 
-```
-npm run build
-# or
-yarn build
-```
+## Step 1: Create a new Strapi application with sample data
 
-## ⚙️ Deployment
+This step is very simple. We will use the Strapi CLI to create a new Strapi application with sample data.
 
-Strapi gives you many possible deployment options for your project including [Strapi Cloud](https://cloud.strapi.io). Browse the [deployment section of the documentation](https://docs.strapi.io/dev-docs/deployment) to find the best solution for your use case.
-
-```
-yarn strapi deploy
+```bash
+npx create-strapi-app@latest my-strapi-app 
 ```
 
-## 📚 Learn more
+You will be guided through the process of creating the application. 
 
-- [Resource center](https://strapi.io/resource-center) - Strapi resource center.
-- [Strapi documentation](https://docs.strapi.io) - Official Strapi documentation.
-- [Strapi tutorials](https://strapi.io/tutorials) - List of tutorials made by the core team and the community.
-- [Strapi blog](https://strapi.io/blog) - Official Strapi blog containing articles made by the Strapi team and the community.
-- [Changelog](https://strapi.io/changelog) - Find out about the Strapi product updates, new features and general improvements.
 
-Feel free to check out the [Strapi GitHub repository](https://github.com/strapi/strapi). Your feedback and contributions are welcome!
-
-## ✨ Community
-
-- [Discord](https://discord.strapi.io) - Come chat with the Strapi community including the core team.
-- [Forum](https://forum.strapi.io/) - Place to discuss, ask questions and find answers, show your Strapi project and get feedback or just talk with other Community members.
-- [Awesome Strapi](https://github.com/strapi/awesome-strapi) - A curated list of awesome things related to Strapi.
-
----
-
-<sub>🤫 Psst! [Strapi is hiring](https://strapi.io/careers).</sub>
-# strapi-home-widget-example
