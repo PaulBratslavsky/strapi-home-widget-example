@@ -4,6 +4,19 @@ In this post, we will take a look at how to build a widget plugin for Strapi.
 
 Strapi Widgets are a way to add custom widgets to the Strapi admin panel. They are a great way to add custom functionality to the admin panel.
 
+Build your own dashboard
+The Strapi admin homepage is now fully customizable.
+
+With the new Widget API, developers can create dashboard components that display:
+
+- Project stats
+- Content overviews
+- Links to workflows
+- Custom metrics or visualizations
+- And more
+- 
+It’s a new way to surface what matters most for each team.
+
 Let's first take a look at what we will be building, then I will walk you through the steps on how to build it.
 
 ## What We Will Be Building
@@ -12,9 +25,13 @@ We will be building a widget that displays the number of content types in the St
 
 Here is what the widget will look like in the admin panel:
 
-![Widget Preview](./public/widget-preview.png)
+![Widget Preview](img/001-widget-preview.png)
 
 This guide is based on Strapi v5 docs. You can find the original docs [here](https://docs.strapi.io/cms/admin-panel-customization/homepage#adding-custom-widgets).
+
+If you prefer to watch a video, you can check out the following video:
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/En5zqXHdze8" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
 I wanted to make a guide that is more hands on and practical. So I will walk you through the steps of building the widget.
 
@@ -78,11 +95,11 @@ This will start the Strapi application. You can access the admin panel at `http:
 
 Go ahead and create a new **Admin User**.
 
-![Create Admin User](./public/create-admin-user.png)
+![Create Admin User](img/002-create-admin-user.png)
 
 Once logged in, you will be greeted with the following screen.
 
-![Strapi Homepage](./public/strapi-homepage.png)
+![Strapi Homepage](img/003-strapi-home-page.png)
 
 Nice, now we have a Strapi application with sample data. We can start building our widget.
 
@@ -159,9 +176,9 @@ Now in another terminal navigate to the root of your Strapi application and run 
 npm run dev
 ```
 
-This will start the Strapi application. You should be able to find your plugin in the admin panel.
+This will start the Strapi application. You should be able to find your plugin in the admin panel in the left sidebar.
 
-![Plugin in Admin Panel](./public/plugin-in-admin-panel.png)
+![Plugin in Admin Panel](img/004-plugin-in-admin-panel.png)
 
 Nice, now we have a plugin that is working. Let's create a new widget.
 
@@ -312,7 +329,7 @@ export default {
 
 If your Strapi application is running, you should be able to see the widget in the admin panel.
 
-![Widget in Admin Panel](./public/widget-in-admin-panel.png)
+![Widget in Admin Panel](img/005-widget-in-admin-panel.png)
 
 **note:** If your application is not running, you can start it by running the following commands:
 
@@ -385,14 +402,15 @@ const controller = ({ strapi }: { strapi: Core.Strapi }) => ({
 export default controller;
 ```
 
-Now that we have our basic controller, let's update the routes to be able to fetch data from our controller in the "Admin API" and "Content API".
+Now that we have our basic controller, let's update the routes to be able to fetch data from our controller in the "Content API" and "Admin API".
 
-**Admin API** - This is the API that is used to fetch data from the admin panel.
-**Content API** - This is the API that is used to fetch data from the public website.
+**Content API** - This is the API that is used to fetch data from the public website. 
+
+**Admin API** - This is the API that is used to fetch data from the admin panel. This is the API that is used to fetch data from the admin panel.
 
 Let's navigate to the `src/routes` folder and make the following changes:
 
-In the `admin-api.ts` file, let's make the following changes:
+In the `content-api.ts` file, let's make the following changes:
 
 ```ts
 const routes = [
@@ -415,7 +433,7 @@ Let's try it out.
 
 First, in the **Admin Panel** navigate to the `Settings -> Users & Permissions plugin -> Roles -> Public` role. You should now see our newly created custom route ( getCustomCounts ) from our plugin that powers our widget.
 
-![Update Permissions](./public/update-permissions.png)
+![Update Permissions](img/006-update-permissions.png)
 
 We can test it out in **Postman** by making a `GET` request to the following URL:
 
@@ -423,7 +441,7 @@ We can test it out in **Postman** by making a `GET` request to the following URL
 http://localhost:1337/api/my-first-widget/count
 ```
 
-![Postman Request](./public/postman-request.png)
+![Postman Request](img/007-postman-request.png)
 
 We should see the following response:
 
@@ -545,7 +563,7 @@ export default MetricsWidget;
 
 Now, if you navigate to the **Admin Panel** you should see the following:
 
-![Metrics Widget in Admin Panel](./public/metrics-widget-in-admin-panel.png)
+![Metrics Widget in Admin Panel](img/008-metrics-widget-in-admin-panel.png)
 
 Nice, now we have a widget that is working. Let's add some custom logic to the controller to fetch data from our database.
 
@@ -713,7 +731,7 @@ export default MetricsWidget;
 
 Now, if you navigate to the **Admin Panel** you should see the following:
 
-![Metrics Widget in Admin Panel](./public/metrics-widget-in-admin-panel.png)
+![Metrics Widget in Admin Panel](img/009-metrics-widget-in-admin-panel.png)
 
 Finally, let's make it prettier by adding a **Table** component from **Strapi Design System**.
 
@@ -834,7 +852,7 @@ export default MetricsWidget;
 ```
 
 Now, if you navigate to the **Admin Panel** you should see the final result:
-![Metrics Widget in Admin Panel](./public/metrics-widget-in-admin-panel.png)
+![Metrics Widget in Admin Panel](img/010-metrics-widget-in-admin-panel.png)
 
 Yay, we have a cool new widget that displays the number of content types in our project.
 
@@ -856,4 +874,10 @@ Widgets like this can be a powerful way to add helpful tools for your team or cl
 
 You can now build your own widgets, pull real data from your backend, and customize the admin panel to better fit your needs.
 
-👉 Get the full code here: [strapi-widget-example](https://github.com/strapi/strapi-widget-example) on GitHub
+👉 Get the full code here: [strapi-widget-example](https://github.com/strapi/strapi-widget-example) on GitHub.
+
+Join the Strapi community: Come hang out with us during our "Open Office" hours on [Discord](https://discord.com/invite/strapi). 
+
+We are there Monday through Friday from 12:30pm CST time.
+
+Stop on by to chat, ask questions, or just say hi!
